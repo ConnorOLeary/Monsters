@@ -1,7 +1,15 @@
 package monster.controller;
 import monster.model.MarshmallowMonster;
+import monster.view.MonsterDisplay;
 import java.util.*;
 public class MonsterController {
+	
+	private MonsterDisplay popup;
+	
+	public MonsterController() {
+		popup = new MonsterDisplay();
+	}
+	
 	public void start() {
 		MarshmallowMonster sample = new MarshmallowMonster();
 		System.out.println(sample);
