@@ -155,5 +155,9 @@ public class MonsterController {
 		}
 		System.out.println("AHHHHHHHHHHHHHHHH");
 		System.out.println(morty);
+		
+		popup.displayText("I'M MR MEESEEKS LOOK AT MEEEEEE!");
+		String answer = popup.getResponse("WHAT IS YOUR REQUEST?");
+		popup.displayText(answer);
 	}
 }
