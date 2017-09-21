@@ -12,48 +12,78 @@ public class MonsterController {
 	
 	public void start() {
 		MarshmallowMonster sample = new MarshmallowMonster();
-		System.out.println(sample);
+		//System.out.println(sample);
+		popup.displayText(sample.toString());
 		System.out.println("");
 		MarshmallowMonster morty = new MarshmallowMonster("Morty", 2, 2, 0, false );
-		System.out.println(morty);
-		System.out.println("M- *BURRRP* M-Morty, I, I gotta borrow one of your arms Morty");
-		System.out.println("Oh geez Rick, I-I don't know");
-		System.out.println("Trust me morty, you won't even feel a thing");
+		//System.out.println(morty);
+		popup.displayText(morty.toString());
+		//System.out.println();
+		popup.displayText("M- *BURRRP* M-Morty, I, I gotta borrow one of your arms Morty");
+		//System.out.println();
+		popup.displayText("Oh geez Rick, I-I don't know");
+		//System.out.println();
+		popup.displayText("Trust me morty, you won't even feel a thing");
 		morty.setArms(1);
-		System.out.println("AHHHHHHHHHHH");
-		System.out.println(morty);
+		//System.out.println();
+		popup.displayText("AHHHHHHHHHHH");
+		popup.displayText(morty.toString());
 		interactWithTheMorty(morty);
 	}
 	
+	private boolean isInteger(String input) {
+		boolean parsed = false;
+		try {
+			int validInteger = Integer.parseInt(input);
+			parsed = true;
+		}
+		catch(NumberFormatException error) {
+			popup.displayText("Thats not a number idiot");
+		}
+		return parsed;
+	}
+	
 	private void interactWithTheMorty(MarshmallowMonster morty) {
-		System.out.println("");
-		System.out.println("What should rick Change from morty next?");
-		System.out.println("Should he give something or take something?");
+		popup.displayText("What should rick Change from morty next?");
 		Scanner myScanner = new Scanner(System.in);
-		String choice = myScanner.nextLine();
+		String choice = popup.getResponse("Should he give something or take something?");
 		if (choice.contains("give")){
-			System.out.println("What should he give Morty?");
-			String choice2 = myScanner.nextLine();
+			System.out.println();
+			String choice2 = popup.getResponse("What should he give Morty?");
 			if(choice2.contains("eye")) {
 				morty.setEyes(morty.getEyeCount() + 1);
-				System.out.println("Here morty, I have an extra eyeball lying around, w-*BELCH*-Want it?");
-				System.out.println("Idk rick, I-I kinda like just having my 2");
-				System.out.println("I'll take that as a yes then");
-				System.out.println("AHHHHHHHHHHH");
+				System.out.println();
+				popup.displayText("Here morty, I have an extra eyeball lying around, w-*BELCH*-Want it?");
+				System.out.println();
+				popup.displayText("I don't know rick, I-I kinda like just having my 2");
+				System.out.println();
+				popup.displayText("I'll take that as a yes then");
+				System.out.println();
+				popup.displayText("AHHHHHHHHHHH");
 			}else if (choice2.contains("arm")){
 				morty.setArms(morty.getArmCount() + 1);
-				System.out.println("You know what Morty, I-I'm sorry heres your arm back");
-				System.out.println("Wha-what really Rick? Thanks");
-				System.out.println("Ya ya, d-don't make me change my mind Morty, here you go");
-				System.out.println("AHHHHHHHHHHH");
+				System.out.println();
+				popup.displayText("You know what Morty, I-I'm sorry heres your arm back");
+				System.out.println();
+				popup.displayText("Wha-what really Rick? Thanks");
+				System.out.println();
+				popup.displayText("Ya ya, d-don't make me change my mind Morty, here you go");
+				System.out.println();
+				popup.displayText("AHHHHHHHHHHH");
 			}else if (choice2.contains("tentacle")){
 				morty.setTentacles(morty.getTentacleAmount() + 1);
-				System.out.println("Hey Morty, you want a tentacle?");
-				System.out.println("Wait what Rick?");
-				System.out.println("I Saaaaaaid, you want a tentacle?");
-				System.out.println("I-I'm not sure Rick, that sounds kinda weird");
-				System.out.println("S-stop being such pussy morty, here you go");
-				System.out.println("AHHHHHHHHHHH");
+				System.out.println();
+				popup.displayText("Hey Morty, you want a tentacle?");
+				System.out.println();
+				popup.displayText("Wait what Rick?");
+				System.out.println();
+				popup.displayText("I Saaaaaaid, you want a tentacle?");
+				System.out.println();
+				popup.displayText("I-I'm not sure Rick, that sounds kinda weird");
+				System.out.println();
+				popup.displayText("S-stop being such pussy morty, here you go");
+				System.out.println();
+				popup.displayText("AHHHHHHHHHHH");
 			}else if (choice2.contains("Bloop")){
 				morty.setBloop(true);
 			}else {
@@ -61,100 +91,144 @@ public class MonsterController {
 			}
 			
 		}else if (choice.contains("take")){
-			System.out.println("What should he take from Morty?");
-			String choice2 = myScanner.nextLine();
+			System.out.println();
+			String choice2 = popup.getResponse("What should he take from Morty?");
 			if(choice2.contains("eye")) {
 				morty.setEyes(morty.getEyeCount() - 1);
-				System.out.println("S-Sorry morty, b-but it looks like I'm gonna need one of your eyes");
-				System.out.println("wait what rick?");
-				System.out.println("I'm gonna need one of your eyes morty, dont worry morty you won't feel anything, you'll be perfectly fine morty");
-				System.out.println("Wait.. but thats what you said about my ar-AHHHHHHHHHHH");
+				System.out.println();
+				popup.displayText("S-Sorry morty, b-but it looks like I'm gonna need one of your eyes");
+				System.out.println();
+				popup.displayText("wait what rick?");
+				System.out.println();
+				popup.displayText("I'm gonna need one of your eyes morty, dont worry morty you won't feel anything, you'll be perfectly fine morty");
+				System.out.println();
+				popup.displayText("Wait.. but thats what you said about my ar-AHHHHHHHHHHH");
 			}else if (choice2.contains("arm")){
 				morty.setArms(morty.getArmCount() - 1);
-				System.out.println("Alright morty, time for the second one");
-				System.out.println("b-but Rick, I still need my second arm, w-without it I can't do normal stuff");
-				System.out.println("You won't need to do normal stuff with where we're going morty, now hold still");
-				System.out.println("oh gee-AHHHHHHHHHHH");
+				System.out.println();
+				popup.displayText("Alright morty, time for the second one");
+				System.out.println();
+				popup.displayText("b-but Rick, I still need my second arm, w-without it I can't do normal stuff");
+				System.out.println();
+				popup.displayText("You won't need to do normal stuff with where we're going morty, now hold still");
+				System.out.println();
+				popup.displayText("oh gee-AHHHHHHHHHHH");
 			}else if (choice2.contains("tentacle")){
 				morty.setTentacles(morty.getTentacleAmount() - 1);
-				System.out.println("MORTY, I'm gonna need to take a tentacle from you morty");
-				System.out.println("w-wait what? But I don't have any tentacles Rick");
-				System.out.println("Do I look like I care morty? Now hold still");
-				System.out.println("AHHHHHHHHHHH");
+				System.out.println();
+				popup.displayText("MORTY, I'm gonna need to take a tentacle from you morty");
+				System.out.println();
+				popup.displayText("w-wait what? But I don't have any tentacles Rick");
+				System.out.println();
+				popup.displayText("Do I look like I care morty? Now hold still");
+				System.out.println();
+				popup.displayText("AHHHHHHHHHHH");
 			}else if (choice2.contains("Bloop")){
 				morty.setBloop(false);
 			}else {
-				System.out.println("What?");
+				System.out.println();
+				popup.displayText("What?");
 			}
 		}else {
 			System.out.println("What?");
 		}
-		System.out.println(morty);
+		popup.displayText(morty.toString());
 		
 		
 		//2nd Iteration
 		if (choice.contains("take")){
-			System.out.println("You-you know what morty, I'm sorry morty, I shouldn't have taken something from you");
-			System.out.println("R-really, ah geeze thanks rick");
-			System.out.println("Let me make it up to you morty, just name it and I'll give it to you, an eye, an arm, a tentacle, a bloop");
+			System.out.println();
+			popup.displayText("You-you know what morty, I'm sorry morty, I shouldn't have taken something from you");
+			System.out.println();
+			popup.displayText("R-really, ah geeze thanks rick");
+			System.out.println();
+			popup.displayText("Let me make it up to you morty, just name it and I'll give it to you, an eye, an arm, a tentacle, a bloop");
 		}else if (choice.contains("give")){
-			System.out.println("I'm gonna be honest with you morty, that whatever I gave you, it had cancer in it morty");
-			System.out.println("WAIT WHAT");
-			System.out.println("Ya morty, but its too late, its already entered too far into your system morty, I'm gonna need to focus it somewhere, and rip that part right out");
-			System.out.println("Ah Geeze Rick");
-			System.out.println("I'm gonna leave it up to you what I take and how much of it morty");
+			System.out.println();
+			popup.displayText("I'm gonna be honest with you morty, that whatever I gave you, it had cancer in it morty");
+			System.out.println();
+			popup.displayText("WAIT WHAT");
+			System.out.println();
+			popup.displayText("Ya morty, but its too late, its already entered too far into your system morty, I'm gonna need to focus it somewhere, and rip that part right out");
+			System.out.println();
+			popup.displayText("Ah Geeze Rick");
+			System.out.println();
+			popup.displayText("I'm gonna leave it up to you what I take and how much of it morty");
 		}
 		
 		
 		if (choice.contains("take")){
-			System.out.println("What body part?");
-			String choice3 = myScanner.nextLine();
-			System.out.println("How many?");
-			int choice4 = myScanner.nextInt();
+			System.out.println();
+			String choice3 = popup.getResponse("What body part?");
+			System.out.println();
+			int choice4r;
+			String choice4 = popup.getResponse("How many?");
+			if(isInteger(choice4)) {
+				choice4r = Integer.parseInt(choice4);
+			}else {
+				choice4r = 0;
+			}
 			
-			System.out.println("Alright here you go morty " + choice4 + " " + choice3 + "s");
+			System.out.println();
+			popup.displayText("Alright here you go morty " + choice4r + " " + choice3 + "s");
 			
 			if(choice3.contains("eye")) {
-				morty.setEyes(morty.getEyeCount() + choice4);
+				morty.setEyes(morty.getEyeCount() + choice4r);
 			}else if (choice3.contains("arm")){
-				morty.setArms(morty.getArmCount() + choice4);
+				morty.setArms(morty.getArmCount() + choice4r);
 			}else if (choice3.contains("tentacle")){
-				morty.setTentacles(morty.getTentacleAmount() + choice4);
+				morty.setTentacles(morty.getTentacleAmount() + choice4r);
 			}else if (choice3.contains("Bloop")){
 				morty.setBloop(true);
 			}else {
-				System.out.println("Hmm, I might have forgotten to carry the 2, well lets see what happens anyways");}
+				System.out.println();
+				popup.displayText("Hmm, I might have forgotten to carry the 2, well lets see what happens anyways");}
+			
 		}else if (choice.contains("give")) {
 			System.out.println("What body part?");
 			String choice3 = myScanner.nextLine();
-			System.out.println("How many?");
-			int choice4 = myScanner.nextInt();
+			int choice4r;
+			String choice4 = popup.getResponse("How many?");
+			if(isInteger(choice4)) {
+				choice4r = Integer.parseInt(choice4);
+			}else {
+				choice4r = 0;
+			}
 			
 			if(choice3.contains("eye")) {
-				if(morty.getEyeCount() < choice4) {
-					System.out.println("I'm sorry morty but I'd never take more from you than I could, Guess I'll need to let the cancer build");
-					System.out.println("Ah Geeze");
+				if(morty.getEyeCount() < choice4r) {
+					System.out.println();
+					popup.displayText("I'm sorry morty but I'd never take more from you than I could, Guess I'll need to let the cancer build");
+					System.out.println();
+					popup.displayText("Ah Geeze");
 				}else {
-				morty.setEyes(morty.getEyeCount() + choice4);}
+				morty.setEyes(morty.getEyeCount() + choice4r);}
 			}else if (choice3.contains("arm")){
-				if(morty.getArmCount() < choice4) {
-					System.out.println("I'm sorry morty but I'd never take more from you than I could, Guess I'll need to let the cancer build");
-					System.out.println("Ah Geeze");
+				if(morty.getArmCount() < choice4r) {
+					System.out.println();
+					popup.displayText("I'm sorry morty but I'd never take more from you than I could, Guess I'll need to let the cancer build");
+					System.out.println();
+					popup.displayText("Ah Geeze");
 				}else {
-				morty.setArms(morty.getArmCount() + choice4);}
+				morty.setArms(morty.getArmCount() + choice4r);}
 			}else if (choice3.contains("tentacle")){
-				if(morty.getTentacleAmount() < choice4) {
-					System.out.println("I'm sorry morty but I'd never take more from you than I could, Guess I'll need to let the cancer build");
-					System.out.println("Ah Geeze");
+				if(morty.getTentacleAmount() < choice4r) {
+					System.out.println();
+					popup.displayText("I'm sorry morty but I'd never take more from you than I could, Guess I'll need to let the cancer build");
+					System.out.println();
+					popup.displayText("Ah Geeze");
 				}else {
-				morty.setTentacles(morty.getTentacleAmount() + choice4);}
+				morty.setTentacles(morty.getTentacleAmount() + choice4r);}
 			}else if (choice3.contains("Bloop")){
 				morty.setBloop(true);
 			}else {
-				System.out.println("Hmm, I might have forgotten to carry the 2, well lets see what happens anyways");}
+				System.out.println();
+				popup.displayText("Hmm, I might have forgotten to carry the 2, well lets see what happens anyways");}
 		}
-		System.out.println("AHHHHHHHHHHHHHHHH");
-		System.out.println(morty);
+		System.out.println();
+		popup.displayText("AHHHHHHHHHHHHHHHH");
+		System.out.println();
+		popup.displayText(morty.toString());
 		
 		popup.displayText("I'M MR MEESEEKS LOOK AT MEEEEEE!");
 		String answer = popup.getResponse("WHAT IS YOUR REQUEST?");
