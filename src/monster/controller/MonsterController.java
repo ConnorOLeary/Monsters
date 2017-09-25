@@ -9,7 +9,7 @@ public class MonsterController {
 	public MonsterController() {
 		popup = new MonsterDisplay();
 	}
-	
+	//When the file is ran this goes first
 	public void start() {
 		MarshmallowMonster sample = new MarshmallowMonster();
 		//System.out.println(sample);
@@ -28,13 +28,25 @@ public class MonsterController {
 		//System.out.println();
 		popup.displayText("AHHHHHHHHHHH");
 		popup.displayText(morty.toString());
+		//This causes the "interact with morty" part of this file using morty as the transfered variable
 		interactWithTheMorty(morty);
 	}
-	
+	//checks to see if a string can be parsed as an integer successfully
 	private boolean isInteger(String input) {
 		boolean parsed = false;
 		try {
 			int validInteger = Integer.parseInt(input);
+			parsed = true;
+		}
+		catch(NumberFormatException error) {
+			popup.displayText("Thats not a number idiot");
+		}
+		return parsed;
+	}
+	private boolean isDouble(String input) {
+		boolean parsed = false;
+		try {
+			double validDouble = Double.parseDouble(input);
 			parsed = true;
 		}
 		catch(NumberFormatException error) {
@@ -158,26 +170,39 @@ public class MonsterController {
 		
 		
 		if (choice.contains("take")){
-			System.out.println();
 			String choice3 = popup.getResponse("What body part?");
-			System.out.println();
-			int choice4r;
-			String choice4 = popup.getResponse("How many?");
-			if(isInteger(choice4)) {
-				choice4r = Integer.parseInt(choice4);
+			int choice4ae = 0;
+			double choice4t = 0;
+			String choice4b = "a";
+			if(choice3.contains("tentacle")) {
+				String choice4 = popup.getResponse("How many?");
+				if(isDouble(choice4)) {
+					choice4t = Double.parseDouble(choice4);
+				}else {
+					choice4t = 0;
+				}
+				popup.displayText("Alright here you go morty " + choice4t + " " + choice3 + "s");
+			}else if(choice3.contains("bloop")){
+				popup.displayText("Alright here you go morty " + choice4b + " " + choice3);
 			}else {
-				choice4r = 0;
+				String choice4 = popup.getResponse("How many?");
+				if(isInteger(choice4)) {
+					choice4ae = Integer.parseInt(choice4);
+				}else {
+					choice4ae = 0;
+				}
+				popup.displayText("Alright here you go morty " + choice4ae + " " + choice3 + "s");
 			}
 			
 			System.out.println();
-			popup.displayText("Alright here you go morty " + choice4r + " " + choice3 + "s");
+			
 			
 			if(choice3.contains("eye")) {
-				morty.setEyes(morty.getEyeCount() + choice4r);
+				morty.setEyes(morty.getEyeCount() + choice4ae);
 			}else if (choice3.contains("arm")){
-				morty.setArms(morty.getArmCount() + choice4r);
+				morty.setArms(morty.getArmCount() + choice4ae);
 			}else if (choice3.contains("tentacle")){
-				morty.setTentacles(morty.getTentacleAmount() + choice4r);
+				morty.setTentacles(morty.getTentacleAmount() + choice4t);
 			}else if (choice3.contains("Bloop")){
 				morty.setBloop(true);
 			}else {
@@ -185,40 +210,54 @@ public class MonsterController {
 				popup.displayText("Hmm, I might have forgotten to carry the 2, well lets see what happens anyways");}
 			
 		}else if (choice.contains("give")) {
-			System.out.println("What body part?");
-			String choice3 = myScanner.nextLine();
-			int choice4r;
-			String choice4 = popup.getResponse("How many?");
-			if(isInteger(choice4)) {
-				choice4r = Integer.parseInt(choice4);
+			System.out.println();
+			String choice3 = popup.getResponse("What body part?");
+			int choice4ae = 0;
+			double choice4t = 0;
+			String choice4b = "a";
+			if(choice3.contains("tentacle")) {
+				String choice4 = popup.getResponse("How many?");
+				if(isDouble(choice4)) {
+					choice4t = Double.parseDouble(choice4);
+				}else {
+					choice4t = 0;
+				}
+			}else if(choice3.contains("bloop")){
+				
 			}else {
-				choice4r = 0;
+				String choice4 = popup.getResponse("How many?");
+				if(isInteger(choice4)) {
+					choice4ae = Integer.parseInt(choice4);
+				}else {
+					choice4ae = 0;
+				}
 			}
 			
+			
 			if(choice3.contains("eye")) {
-				if(morty.getEyeCount() < choice4r) {
+				if(morty.getEyeCount() < choice4ae) {
 					System.out.println();
 					popup.displayText("I'm sorry morty but I'd never take more from you than I could, Guess I'll need to let the cancer build");
 					System.out.println();
 					popup.displayText("Ah Geeze");
 				}else {
-				morty.setEyes(morty.getEyeCount() + choice4r);}
+				morty.setEyes(morty.getEyeCount() + choice4ae);}
 			}else if (choice3.contains("arm")){
-				if(morty.getArmCount() < choice4r) {
+				if(morty.getArmCount() < choice4ae) {
 					System.out.println();
 					popup.displayText("I'm sorry morty but I'd never take more from you than I could, Guess I'll need to let the cancer build");
 					System.out.println();
 					popup.displayText("Ah Geeze");
 				}else {
-				morty.setArms(morty.getArmCount() + choice4r);}
+				morty.setArms(morty.getArmCount() + choice4ae);}
 			}else if (choice3.contains("tentacle")){
-				if(morty.getTentacleAmount() < choice4r) {
+				if(morty.getTentacleAmount() < choice4t) {
 					System.out.println();
 					popup.displayText("I'm sorry morty but I'd never take more from you than I could, Guess I'll need to let the cancer build");
 					System.out.println();
 					popup.displayText("Ah Geeze");
 				}else {
-				morty.setTentacles(morty.getTentacleAmount() + choice4r);}
+				morty.setTentacles(morty.getTentacleAmount() + choice4t);}
 			}else if (choice3.contains("Bloop")){
 				morty.setBloop(true);
 			}else {
