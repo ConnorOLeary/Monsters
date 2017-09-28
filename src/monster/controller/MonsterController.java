@@ -5,10 +5,14 @@ import java.util.*;
 public class MonsterController {
 	
 	private MonsterDisplay popup;
+	private List<MarshmallowMonster> monsterList;
 	
 	public MonsterController() {
 		popup = new MonsterDisplay();
+		monsterList = new ArrayList<MarshmallowMonster>();
 	}
+	
+	
 	//When the file is ran this goes first
 	public void start() {
 		
@@ -19,28 +23,50 @@ public class MonsterController {
 		//	count++;
 		//}
 		
-		for(int loop = 0; loop < 15; loop++) {
-			popup.displayText("I've looped " + (loop + 1) + " times out of 15");
-		}
+		//for(int loop = 0; loop < 15; loop++) {
+		//	popup.displayText("I've looped " + (loop + 1) + " times out of 15");
+		//}
 		MarshmallowMonster sample = new MarshmallowMonster();
 		//System.out.println(sample);
-		popup.displayText(sample.toString());
-		System.out.println("");
+//		popup.displayText(sample.toString());
+//		System.out.println("");
 		MarshmallowMonster morty = new MarshmallowMonster("Morty", 2, 2, 0, false );
 		//System.out.println(morty);
-		popup.displayText(morty.toString());
+//		popup.displayText(morty.toString());
 		//System.out.println();
-		popup.displayText("M- *BURRRP* M-Morty, I, I gotta borrow one of your arms Morty");
+//		popup.displayText("M- *BURRRP* M-Morty, I, I gotta borrow one of your arms Morty");
 		//System.out.println();
-		popup.displayText("Oh geez Rick, I-I don't know");
+//		popup.displayText("Oh geez Rick, I-I don't know");
 		//System.out.println();
-		popup.displayText("Trust me morty, you won't even feel a thing");
-		morty.setArms(1);
+//		popup.displayText("Trust me morty, you won't even feel a thing");
+//		morty.setArms(1);
 		//System.out.println();
-		popup.displayText("AHHHHHHHHHHH");
-		popup.displayText(morty.toString());
+//		popup.displayText("AHHHHHHHHHHH");
+//		popup.displayText(morty.toString());
 		//This causes the "interact with morty" part of this file using morty as the transfered variable
-		interactWithTheMorty(morty);
+		monsterList.add(sample);
+		monsterList.add(morty);
+		testList();
+		
+		//interactWithTheMorty(morty);
+	}
+	
+	
+	private void testList() {
+		for (int index = 0; index < monsterList.size(); index++) {
+			MarshmallowMonster currentMonster = monsterList.get(index);
+			popup.displayText(currentMonster.getName());
+			String newName = popup.getResponse("What should my new name be???");
+			currentMonster.setName(newName);
+			popup.displayText(currentMonster.getName());
+		}
+		for (MarshmallowMonster current : monsterList)
+		{
+			popup.displayText(current.getName());
+			String newName = popup.getResponse("What should my new name be?");
+			current.setName(newName);
+			popup.displayText(current.getName());
+		}
 	}
 	//checks to see if a string can be parsed as an integer successfully
 	private boolean isInteger(String input) {
@@ -54,6 +80,7 @@ public class MonsterController {
 		}
 		return parsed;
 	}
+	//checks to see if a string can be parsed as a double successfully
 	private boolean isDouble(String input) {
 		boolean parsed = false;
 		try {

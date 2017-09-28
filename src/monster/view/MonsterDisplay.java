@@ -41,5 +41,5 @@ public class MonsterDisplay {
 			
 			return response;
 		}
-		
+		 
 }
