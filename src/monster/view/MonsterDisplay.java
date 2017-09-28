@@ -15,5 +15,31 @@ public class MonsterDisplay {
 			
 			return response;
 		}
+		public String getResponse(String questionAsk, String responseType) {
+			String response = "";
+			boolean parsed = true;
+			while(parsed) {
+				if (responseType.equals("int")) {
+					try {
+						int validInteger = Integer.parseInt(response);
+						parsed = false;
+					}catch(NumberFormatException error) {
+					
+					}
+				}else if (responseType.equals("double")) {
+					try {
+						double validDouble = Double.parseDouble(response);
+						parsed = false;
+					}catch(NumberFormatException error) {
+
+					}
+				}else {
+					parsed = false;
+				}
+			}
+			response += JOptionPane.showInputDialog(null, questionAsk);
+			
+			return response;
+		}
 		
 }

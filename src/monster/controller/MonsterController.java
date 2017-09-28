@@ -11,6 +11,17 @@ public class MonsterController {
 	}
 	//When the file is ran this goes first
 	public void start() {
+		
+		boolean finished =true;
+		int count = 0;
+		//while(count < 100) {
+		//	popup.displayText("I am so neat!");
+		//	count++;
+		//}
+		
+		for(int loop = 0; loop < 15; loop++) {
+			popup.displayText("I've looped " + (loop + 1) + " times out of 15");
+		}
 		MarshmallowMonster sample = new MarshmallowMonster();
 		//System.out.println(sample);
 		popup.displayText(sample.toString());
